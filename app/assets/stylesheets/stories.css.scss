@@ -1,0 +1,48 @@
+// Place all the styles related to the Stories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
+@import url(https://fonts.googleapis.com/css?family=Merienda);
+
+@-webkit-keyframes pulse_animation {
+	0% { -webkit-transform: scale(1); }
+	30% { -webkit-transform: scale(1); }
+	40% { -webkit-transform: scale(1.08); }
+	50% { -webkit-transform: scale(1); }
+	60% { -webkit-transform: scale(1); }
+	70% { -webkit-transform: scale(1.05); }
+	80% { -webkit-transform: scale(1); }
+	100% { -webkit-transform: scale(1); }
+}
+
+textarea#story_title {
+	font-size: 52px;
+	line-height: 1;
+	border: none;
+	width: 100%;
+}
+
+textarea:focus {
+	border:none !important;
+	outline: none !important;
+}
+
+textarea#story_subtitle {
+font-family: "ff-tisa-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+border: none;
+width: 100%;
+font-weight: 400;
+font-style: italic;
+margin: 0px 0;
+line-height: 1.2;
+font-size: 1.5em;
+-webkit-margin-before: 0.83em;
+-webkit-margin-after: 0.83em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}

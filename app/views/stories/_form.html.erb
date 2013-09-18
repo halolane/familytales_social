@@ -1,0 +1,23 @@
+<div class="story-content-inner">
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.text_area :title, :rows => 1, :placeholder => "Type your story title" %> 
+    <%= f.text_area :subtitle, :rows => 1, :placeholder => "Type your story subtitle" %>
+    <textarea cols="40" id="story_body" name="story[body]" placeholder="Type your family tale" rows="20" tabindex="-1" style="width:100%"></textarea>
+  <div class="actions">
+
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
