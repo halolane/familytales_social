@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FamilytalesSocial</title>
+    <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
 
   <%= javascript_include_tag "application" %>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
@@ -13,7 +12,14 @@
 </head>
 <body>
 
+<%= render 'layouts/header' %>
+<div class="container" style="padding-top: 80px">
+  <div class="row">
 <%= yield %>
 
+	</div>
+      
+</div><!-- /.container -->
+<%= render 'shared/signup_modal' %>
 </body>
 </html>

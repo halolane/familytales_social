@@ -1,0 +1,96 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Raleway:900);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+.articletext {
+	padding-top: 20px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.5em;
+}
+
+.articletext > p {
+	padding-top: 1.3em;
+}
+
+.heading {
+	font-family: 'Raleway', sans-serif;
+	padding-top: 1em;
+}
+
+.subtitle {
+	margin-top: -0.4em;
+	padding-bottom: 1.8em;
+	color: #63B559;
+}
+
+.name {
+	color: #63B559;
+}
+
+.logo {
+	width: 100%;
+	border-bottom: 1px solid #DBDBFF;
+	background-color: #ffffff;
+}
+
+first
+{
+	font-family: 'Lobster', cursive;
+	font-size: 2em;
+	color: #63B559;	
+}
+
+.navbar {
+	border-color: #DBDBFF;
+}
+
+.mainlogo {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.footer {
+	border-top: 1px solid #DBDBFF;
+	padding-bottom: 2em;
+}
+
+.stories {
+	padding-top: 0.3em;
+}
+
+.tile {
+	width: 350px;
+	height: 300px;
+	color: #ffffff;
+	font-size: 1.5em;
+	padding: 20px 30px;
+}
+
+.signup {
+	background-color: #47B099;
+}
+
+.main {
+	padding-top: 9em;
+}
+
+.slogan {
+	padding-bottom: 10px;
+	font-family: 'Raleway', sans-serif;
+}
+
+img.storycover {
+	opacity: 0.6;
+}
+
+#overlay {
+	background: red;
+	width: 350px;
+	height: 300px;
+}
+
+
+body { padding-top: 4.3em; }

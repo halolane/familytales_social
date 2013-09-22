@@ -1,20 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @story.title) %>
+    <div class="col-md-2 story-author-side">
+    <div class="story-author-card">
+		    <a href="/@luckyshirt" class="story-author-image" data-action="stat-link" data-action-value="story-discovery.author.image" title="Go to the profile of Lucky Shirt"><img src="https://d233eq3e3p3cv0.cloudfront.net/fit/c/190/190/0*DTyKr5e3g9CaoTDy.jpeg" title="Lucky Shirt"></a>
+		    <div class="story-author-info"><a href="/@luckyshirt" data-id="496727088aa3" title="Go to the profile of Lucky Shirt" rel="author" class="story-author-name" data-action="stat-link" data-action-value="story-discovery.author.name"><%= @storyauthor.name %></a>
+		    <p>
+		    Single dad. I make stuff. Do you like Cards Against Humanity? Check out my card game Superfight <a rel="nofollow" target="_blank" href="http://bit.ly/16fpAES">http://bit.ly/16fpAES</a> Also <a href="http://twitter.com/luckyshirt" target="_blank" title="Twitter profile for @luckyshirt">@luckyshirt</a> on that other thing.
+		    </p>
 
-<p>
-  <b>Title:</b>
-  <%= @story.title %>
-</p>
+		    </div>
+	    </div>
+    </div>
+    <div class="col-md-8">
+      <h1 class="heading"><strong><%= @story.title %></strong></h1>
+       <h3 class="subtitle"><em><%= @story.subtitle %></em></h3>
+      <h5><span class="name">ALI RUSHDAN TARIQ</span> <span class="text-muted"> | <%= @story.created_at.strftime("%b %d, %Y") %></span></h5></span>
+    </div>
+    <div class="col-md-8">
+      <img src="http://placehold.it/900x350" class="img-rounded img-responsive">
+    </div>
+		<div class="col-md-8 col-md-offset-2 articletext">
+			<%= @story.body.html_safe %>
 
-<p>
-  <b>Subtitle:</b>
-  <%= @story.subtitle %>
-</p>
+			<%= render 'layouts/footer' %>
+		</div>
 
-<p>
-  <b>Body:</b>
-  <%= @story.body %>
-</p>
-
+	
 
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

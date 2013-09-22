@@ -1,0 +1,25 @@
+
+<div id="signup_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="betamodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    	<h3 id="myModalLabel">Sign up now!</h3>
+      </div>
+      <div class="modal-body">
+      	
+    	<div class="userinput">
+    		<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    	  	<%= f.text_field :name, :class => "new_user_field",:placeholder => "Name" %></br>
+    	  	  	<%= f.text_field :email, :type => "email", :class => "new_user_field", :placeholder => "Your email" %></br>
+    	  	<%= f.password_field :password, :class => "new_user_field",:placeholder => "Your new password" %>
+    	</div>
+      </div>
+      <div class="modal-footer">
+      	 <%= f.submit "Create my storybook!", class: "btn green_button", width:"width:200px !important;" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>  
