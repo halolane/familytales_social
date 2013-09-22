@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :bio, :avatar
+  extend FriendlyId
+  friendly_id :name, :use => :slugged, :sequence_separator => ''
+  attr_accessible :email, :name, :password, :password_confirmation, :bio, :avatar, :slug
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -17,6 +19,10 @@ class User < ActiveRecord::Base
   :content_type => { :content_type => /image/ },
   :size => { :in => 0..5.megabytes }
   
+  def normalize_friendly_id(string)
+    super.gsub("-", "")
+  end
+
   def dynamic_style_format_symbol
     URI.escape(@dynamic_style_format).to_sym
   end

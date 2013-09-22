@@ -7,6 +7,7 @@ gem "paperclip", "~> 3.0"
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'jquery-rails'
 gem 'jquery-cookie-rails'
+gem "friendly_id", "~> 4.0.9"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
