@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :bio, :avatar
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -10,4 +10,28 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   has_many :stories, dependent: :destroy
+
+  has_attached_file :avatar, :source_file_options =>  {:all => '-auto-orient'}, :styles => Proc.new { |photo| photo.instance.styles }
+
+  validates_attachment :avatar,
+  :content_type => { :content_type => /image/ },
+  :size => { :in => 0..5.megabytes }
+  
+  def dynamic_style_format_symbol
+    URI.escape(@dynamic_style_format).to_sym
+  end
+
+  def styles
+    unless @dynamic_style_format.blank?
+      { dynamic_style_format_symbol => @dynamic_style_format }
+    else
+      {}
+    end
+  end
+
+  def dynamic_photo_url(format)
+    @dynamic_style_format = format
+    avatar.reprocess!(dynamic_style_format_symbol) unless avatar.exists?(dynamic_style_format_symbol)
+    avatar.url(dynamic_style_format_symbol)
+  end
 end
