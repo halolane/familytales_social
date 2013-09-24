@@ -9,6 +9,7 @@
       <div class="modal-body">
       	
     	<div class="userinput">
+      
     		<%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     	  	<%= f.text_field :name, :class => "new_user_field",:placeholder => "Name" %></br>

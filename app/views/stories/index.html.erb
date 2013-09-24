@@ -1,27 +1,58 @@
-<h1>Listing stories</h1>
+<div class="container main">
+  <div class="row stories">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Subtitle</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @stories.each do |story| %>
-  <tr>
+    <!-- <div class="col-md-4">
+      <div class="tile signup">
+        <div class="slogan">
+          Family stories are meant to be passed on. Sign up to share yours today.
+        </div>
+        <form role="form">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-success btn-lg">Sign up now</button>
+        </form>
+      </div>
+    </div> -->
+  <% @counter = 0 %>
+  <% @covercolor = ['#47B099','#6b9abb','#ce5346','#e8aa4a'] %>
+  <% @stories.each do |story| %>
+    
+    <div class="col-md-4">
+      <%= link_to story do %>
+      <div class="storyCoverTitle">
+        <div class="story-title">
+          <h3 class="covertitle"><%= story.title %></h3>
+          <h4 class="coversubtitle"><%= story.subtitle %></h4>
+        </div>
+      </div>
+      <div class="storyCoverWrapper" style="background-color:<%= @covercolor.sample%>">
+        <span class="hoverMask"></span>
+      </div>
+      
+      <% end %>
+    </div>
+    <% @counter = @counter + 1 %>
+    <% if @counter % 3 == 0 %>
+      </div>
+      <div class="row stories">
+    <% end %>
+  <!-- <tr>
     <td><%= story.title %></td>
     <td><%= story.subtitle %></td>
     <td><%= story.body %></td>
     <td><%= link_to 'Show', story %></td>
     <td><%= link_to 'Edit', edit_story_path(story) %></td>
     <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  </tr> -->
+  <% end %>
+
 
 <br />
 
-<%= link_to 'New Story', new_story_path %>
+  </div>
+</div>

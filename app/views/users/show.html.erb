@@ -1,15 +1,55 @@
+<div class="container" style="padding-top: 80px">
+  <div class="row">
 <p id="notice"><%= notice %></p>
+    <div class="col-md-2 user-side">
+    	<div class="user-card">
+    		<div class="userImageWrapper">
+    		<span class="user-image">
+		    <%= gravatar_for @user %>
+		    </span>
+		    </div>
+		    <div class="user-info"><%= link_to @user, :class => "user-name", :title => "Go to the profile of " + @user.name do %><%= @user.name %><% end %>
+		    <p>
+		    	<%= @user.bio %>
+		    </p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+		    </div>
+	    </div>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
+<!-- Insert edit profile here -->
+    </div>
+    <div class="col-md-12 col-md-offset-2">
+    	<div class="row stories">
+      <% @counter = 0 %>
+  <% @covercolor = ['#47B099','#6b9abb','#ce5346','#e8aa4a'] %>
+  <% @stories.each do |story| %>
+    
+    <div class="col-md-4">
+      <%= link_to story do %>
+      <div class="storyCoverTitle">
+        <div class="story-title">
+          <h3 class="covertitle"><%= story.title %></h3>
+          <h4 class="coversubtitle"><%= story.subtitle %></h4>
+        </div>
+      </div>
+      <div class="storyCoverWrapper" style="background-color:<%= @covercolor.sample%>">
+	        <span class="hoverMask"></span>
+      </div>
+      <% end %>
+      
+    </div>
+    <% @counter = @counter + 1 %>
+    <% if @counter % 2 == 0 %>
+      </div>
+      <div class="row stories">
+    <% end %>
+ 
+  <% end %>
+  		</div>
+		</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
+      
+</div><!-- /.container -->

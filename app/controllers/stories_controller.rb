@@ -1,9 +1,12 @@
 class StoriesController < ApplicationController
+  before_filter :signed_in_user, only: [:destroy, :edit, :create]
+  before_filter :correct_user_or_published, only: :show
+  before_filter :correct_user,   only: :edit
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
-
+    @stories = Story.where(published: true)
+    @user = User.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stories }
@@ -25,8 +28,9 @@ class StoriesController < ApplicationController
   # GET /stories/new
   # GET /stories/new.json
   def new
-    @story = Story.new
-
+    @story =  current_user.stories.build()
+    @story.save
+    @user = User.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -41,8 +45,7 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(params[:story])
-
+    @story =  current_user.stories.build(params[:story])
     respond_to do |format|
       if @story.save
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
@@ -81,4 +84,28 @@ class StoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def publish
+    @story = Story.find(params[:id])
+    @story.published = true
+    @story.save
+    respond_to do |format|
+      format.html { redirect_to stories_url }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+
+    def correct_user
+      @story = Story.find(params[:id])
+      @user = User.find(@story.user_id)
+      redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def correct_user_or_published
+      @story = Story.find(params[:id])
+      @user = User.find(@story.user_id)
+      redirect_to(root_path) unless ( current_user?(@user) or @story.published )
+    end
 end

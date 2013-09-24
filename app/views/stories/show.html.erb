@@ -1,9 +1,13 @@
 <% provide(:title, @story.title) %>
+
+<div class="container" style="padding-top: 80px">
+  <div class="row">
     <div class="col-md-2 story-author-side">
-    <div class="story-author-card">
-		    <a href="/@luckyshirt" class="story-author-image" data-action="stat-link" data-action-value="story-discovery.author.image" title="Go to the profile of Lucky Shirt">
-		    <%= gravatar_for @storyauthor %></a>
-		    <div class="story-author-info"><a href="/@luckyshirt" data-id="496727088aa3" title="Go to the profile of Lucky Shirt" rel="author" class="story-author-name" data-action="stat-link" data-action-value="story-discovery.author.name"><%= @storyauthor.name %></a>
+    	<div class="story-author-card">
+    		<%= link_to @storyauthor, :class => "story-author-image", :title => "Go to the profile of " + @storyauthor.name do %>
+		    <%= gravatar_for @storyauthor %>
+		    <% end %>
+		    <div class="story-author-info"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %>
 		    <p>
 		    	<%= @storyauthor.bio %>
 		    </p>
@@ -12,20 +16,31 @@
 	    </div>
     </div>
     <div class="col-md-8">
+    	
       <h1 class="heading"><strong><%= @story.title %></strong></h1>
-       <h3 class="subtitle"><em><%= @story.subtitle %></em></h3>
-      <h5><span class="name">ALI RUSHDAN TARIQ</span> <span class="text-muted"> | <%= @story.created_at.strftime("%b %d, %Y") %></span></h5></span>
+       <!-- <h3 class="subtitle"><em><%= @story.subtitle %></em></h3> -->
+      <div class="storyactionbar">
+			  <ul class="story-actions-btns">
+			    <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" } do %>
+			        <button class="btn btn-small" title="Delete this post">Delete</button>
+			      <% end %>
+			    </li>
+			    <li><%= link_to 'Edit', edit_story_path(@story), :class => "btn btn-small btn-primary green_button", :title => "Edit story" %> 
+			    </li>
+			  </ul>
+			</div>
+      <!-- <h5><span class="name">ALI RUSHDAN TARIQ</span> <span class="text-muted"> | </span></h5></span> -->
     </div>
     <div class="col-md-8">
       <img src="http://placehold.it/900x350" class="img-rounded img-responsive">
     </div>
-		<div class="col-md-8 col-md-offset-2 articletext">
-			<%= @story.body.html_safe %>
+		<div class="col-md-8 articletext col-md-offset-2">
+			<%= if !@story.body.nil?; @story.body.html_safe; end %>
+
+			<%= render 'shared/socialshare' %>
 
 			<%= render 'layouts/footer' %>
 		</div>
-
-	
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+	</div>
+      
+</div><!-- /.container -->

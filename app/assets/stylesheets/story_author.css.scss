@@ -1,19 +1,25 @@
 
 .story-author-image {
-float: right;
+/*float: right;*/
 }
 
 .story-author-card {
 	position: relative;
-	width: 160px;
-	float: left;
+	/*float: left;*/
 	text-align: right;
 }
 
-.story-author-image {
+.user-card {
+	position: relative;
+	/*float: left;*/
+	text-align: center;
+}
+
+
+.story-author-image, .user-image {
 display: block;
-position: relative;
-float: left;
+/*position: relative;*/
+/*float: left;*/
 overflow: hidden;
 background: #fff;
 text-align: center;
@@ -28,11 +34,17 @@ border-radius: 70px;
 float: right;
 }
 
-.story-author-image {
+.user-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.story-author-image, .user-image {
 margin-bottom: 10px;
 }
 
-.story-author-image img {
+.story-author-image img, .user-image img {
 width: 100%;
 -webkit-border-radius: 95px;
 -moz-border-radius: 95px;
@@ -40,18 +52,17 @@ border-radius: 95px;
 background: #f2f2f0;
 }
 
-.story-author-side {
+.story-author-side, .user-side {
 	margin-top: 20px;
 }
 
-.story-author-card {
+.story-author-card, .user-card {
 	position: relative;
 	border-bottom: 1px solid #dededc;
-	padding: 45px 5px 0;
 	overflow: hidden;
 }
 
-.story-author-info .story-author-name {
+.story-author-info .story-author-name, .user-info .user-name {
 	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
 	font-weight: 700;
 	display: block;
@@ -64,7 +75,7 @@ background: #f2f2f0;
 .story-author-info {
 	padding-top: 80px;
 }
-.story-author-info p {
+.story-author-info p, .user-info p {
 	font-size: 14px;
 	line-height: 1.4;
 	color: #666665;
@@ -96,4 +107,47 @@ input.new_user_field {
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.storyactionbar {
+
+	
+	right: 10px;
+	pointer-events: visible;
+	-webkit-transition: opacity .3s linear;
+	-moz-transition: opacity .3s linear;
+	-ms-transition: opacity .3s linear;
+	-o-transition: opacity .3s linear;
+	transition: opacity .3s linear;
+	font-size: 14px;
+	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 400;
+	color: #b3b3b1;
+}
+
+.story-actions-btns {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 14px;
+font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+font-weight: 400;
+color: #b3b3b1;
+padding: 0;
+list-style: none;
+list-style-image: none;
+	li {
+		margin-right: 4px;
+	display: inline-block;
+	}
+}
+
+.socialshare {
+	a {
+		color: #b3b3b1;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #666665;
+	}
 }
