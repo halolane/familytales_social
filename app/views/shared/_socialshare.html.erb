@@ -1,4 +1,7 @@
 <div class="socialshare">
+	<span class="FavThis">
+	<button class="btn btn-primary green_button">Fav This Tale</button>
+	</span>
 	<span class="facebook">
 		<a href="https://www.facebook.com/sharer/sharer.php?u=<%= u request.original_url%>" target="_blank">
 		  <i class="icon icon-facebook"></i>
@@ -8,4 +11,6 @@
 		<a href="https://twitter.com/share?text=<%= u ( '"' + @story.title + '"' + ' by ' + '@' + @storyauthor.username) %>&url=<%= u request.original_url%>" target="_blank"><i class="icon icon-twitter icon-twitter-dark"></i></a>
 		
 	</span>
+
 </div>
+</br>
