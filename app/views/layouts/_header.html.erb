@@ -28,20 +28,17 @@
             <li><a href="#">Ever</a></li>
           </ul>
         </li>
-        <li><%= link_to "Create new story", new_story_path %>
+        <% if signed_in? %>
+          <li><%= link_to "Create new story", new_story_path %>
+        <% end %>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="button" class="btn btn-default">Go</span></button>
-      </form>
+  
       <ul class="nav navbar-nav navbar-right">
         
         <% if signed_in? %>
           <li><%= link_to "Log out", signout_path, method: "delete" %></li>
         <% else %>
-          <li><%= link_to "Log in", signin_path %></li>
+          <li><%= link_to "Log in / Sign Up", signin_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
