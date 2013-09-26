@@ -14,7 +14,8 @@
 
 .heading {
 	font-family: 'Raleway', sans-serif;
-	padding-top: 1em;
+/*	padding-top: 1em;
+*/
 }
 
 .subtitle {
@@ -93,4 +94,27 @@ img.storycover {
 }
 
 
-body { padding-top: 4.3em; }
+body { /*padding-top: 4.3em;*/ padding-top: 0px;}
+
+
+.green_button {
+	color: #ffffff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.green_button:hover {
+	color: #ffffff;
+	background-color: #418441;
+	border-color: #499449;
+}
+
+a {
+	color: #63B559;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #418441;
+}

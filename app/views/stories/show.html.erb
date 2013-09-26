@@ -1,24 +1,31 @@
 <% provide(:title, @story.title) %>
 
-<div class="container" style="padding-top: 80px">
+<div class="container" >
   <div class="row">
-    <div class="col-md-2 story-author-side">
-    	<div class="story-author-card">
-    		<%= link_to @storyauthor, :class => "story-author-image", :title => "Go to the profile of " + @storyauthor.name do %>
-		    <%= gravatar_for @storyauthor %>
-		    <% end %>
-		    <div class="story-author-info"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %>
-		    <p>
-		    	<%= @storyauthor.bio %>
-		    </p>
-
-		    </div>
+    <div class="col-md-2 story-side">
+    	<div class="sidebar-item storylesson">
+	    	<p><strong>Morale of this tale</strong></p>
+	    	<p><%= @story.lesson %>
+	    	</p>
 	    </div>
+    	<div class="sidebar-item story-author-card">
+    		<p><strong>This tale features</strong></p>
+    			<% if @story.characters != "" %>
+    				<% @story.characters.split(',').each do |c| %>
+    					<p class="storycharacter"><%= c %></p></br>
+    				<% end %>
+    			<% else %>
+    				<p class="storycharacter">Me</p></br>
+    			<% end %>
+	    </div>
+	    
     </div>
     <div class="col-md-8">
     	
       <h1 class="heading"><strong><%= @story.title %></strong></h1>
        <!-- <h3 class="subtitle"><em><%= @story.subtitle %></em></h3> -->
+      <h5><span class="name"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %></span> <span class="text-muted"> | <%= @story.updated_at.strftime("%b %d, %Y") %></span></h5></span>
+      <% if current_user?(@story.user) %>
       <div class="storyactionbar">
 			  <ul class="story-actions-btns">
 			    <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" } do %>
@@ -29,12 +36,10 @@
 			    </li>
 			  </ul>
 			</div>
-      <!-- <h5><span class="name">ALI RUSHDAN TARIQ</span> <span class="text-muted"> | </span></h5></span> -->
+      <% end %>
     </div>
-    <div class="col-md-8">
-      <img src="http://placehold.it/900x350" class="img-rounded img-responsive">
-    </div>
-		<div class="col-md-8 articletext col-md-offset-2">
+		<div class="col-md-8 articletext">
+			<img src="http://placehold.it/900x350" class="img-rounded img-responsive">
 			<%= if !@story.body.nil?; @story.body.html_safe; end %>
 
 			<%= render 'shared/socialshare' %>

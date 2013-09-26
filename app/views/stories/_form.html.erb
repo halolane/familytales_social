@@ -1,4 +1,5 @@
 <%= form_for(@story) do |f| %>
+
 <div class="storyactionbar">
   <ul class="story-actions-btns">
     <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" } do %>
@@ -7,7 +8,7 @@
     </li>
     <li><%= f.submit "Save Changes", :class => "btn btn-small", :title => "Save Changes" %>
     </li>
-    <li><%= link_to "Publish", publish_story_path(@story), :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish" %>
+    <li><%= link_to "Publish", publish_story_path(@story), :name => "commit", :type => "submit", :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish" %>
     </li>
   </ul>
 </div>
@@ -25,8 +26,9 @@
     </div>
   <% end %>
 
-    <%= f.text_area :title, :rows => 1, :placeholder => "Type your story title" %> 
-    <%= f.text_area :subtitle, :rows => 1, :placeholder => "Type your story subtitle" %>
+    <%= f.text_area :title, :rows => 1, :placeholder => "Type your tale's title" %> 
+    <%= f.text_area :lesson, :rows => 1, :placeholder => "Morale of this tale" %>
+    <%= f.text_area :characters, :rows => 1, :placeholder => "Which family members are featured in this tale? (separate by comma)" %>
     <textarea cols="40" id="story_body" name="story[body]" placeholder="Type your family tale" rows="20" tabindex="-1" style="width:100%"><%= if !@story.body.nil?; @story.body; end %> </textarea>
   <div class="actions">
 
