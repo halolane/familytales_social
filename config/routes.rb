@@ -4,6 +4,8 @@ FamilytalesSocial::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :stories
   root to: 'stories#index'
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

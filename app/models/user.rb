@@ -4,12 +4,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :bio, :avatar, :slug, :username
   has_secure_password
 
-  before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence:   true,
-                    format:     { with: VALID_EMAIL_REGEX },
+  validates :email, 
                     uniqueness: { case_sensitive: false }
   
 
@@ -20,7 +18,34 @@ class User < ActiveRecord::Base
   validates_attachment :avatar,
   :content_type => { :content_type => /image/ },
   :size => { :in => 0..5.megabytes }
+
+  def self.from_omniauth(auth)
+    user = where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+    user.oauth_token = auth["credentials"]["token"]
+    user.oauth_secret = auth["credentials"]["secret"]
+    user.save!
+    user
+  end
+
+  def self.create_from_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+      user.username = auth["info"]["nickname"]
+      user.bio = auth["info"]["description"]
+      user.tweet_avatar = auth['info']['image'].sub("_normal", "")    
+      user.password = auth["credentials"]["secret"]
+      user.password_confirmation = auth["credentials"]["secret"]
+
+    end
+  end
   
+  def twitter
+    if provider == "twitter"
+      @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
+    end
+  end
   def normalize_friendly_id(string)
     super.gsub("-", "")
   end

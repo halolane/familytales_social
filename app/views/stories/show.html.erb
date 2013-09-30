@@ -8,7 +8,7 @@
 	    	<p><%= @story.lesson %>
 	    	</p>
 	    </div>
-    	<div class="sidebar-item story-author-card">
+    	<div class="sidebar-item story-characters">
     		<p><strong>This tale features</strong></p>
     			<% if @story.characters != "" %>
     				<% @story.characters.split(',').each do |c| %>
@@ -37,13 +37,30 @@
 			  </ul>
 			</div>
       <% end %>
-    </div>
-		<div class="col-md-8 articletext">
+ 
 			<img src="http://placehold.it/900x350" class="img-rounded img-responsive">
 			<%= if !@story.body.nil?; @story.body.html_safe; end %>
 
 			<%= render 'shared/socialshare' %>
-
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="story-author-card">
+				<div class="col-md-2">
+    		<%= link_to @storyauthor, :class => "story-author-image", :title => "Go to the profile of " + @storyauthor.name do %>
+		    <img src="<%= @storyauthor.tweet_avatar %>" alt="">
+		    <% end %>
+		    </div>
+		    <div class="col-md-8">
+		    <div class="story-author-info"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %>
+		    <p>
+		    	<%= @storyauthor.bio %>
+		    </p>
+		    </div>
+		    </div>
+	    </div>
+	    </div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
 			<%= render 'layouts/footer' %>
 		</div>
 	</div>
