@@ -22,7 +22,6 @@
 
 textarea#story_title {
 	font-size: 52px;
-	line-height: 1;
 	border: none;
 	width: 100%;
 }
@@ -74,7 +73,6 @@ textarea#story_body {
 
 .storyCoverWrapper:hover .hoverMask{background:rgba(255,255,255,0.1)}
 
-.storyCoverWrapper:active .hoverMask{background:rgba(0,0,0,0.1)}
 
 .storyCoverWrapper{position:relative;overflow:hidden;clear:both;height:300px;width:350px}
 
@@ -83,6 +81,7 @@ textarea#story_body {
 	color: white;
 	padding-left: 10px;
 	padding-right: 10px;
+	text-shadow: 1px 1px 1px black;
 }
 .storyCoverTitle {
 	position: absolute;
@@ -92,3 +91,38 @@ textarea#story_body {
 
 }
 
+div.storyphotowrapper input {
+  display: inline-block !important;
+	cursor: pointer;
+	position: relative;
+	top: -20px;
+}
+
+div.storyphotowrapper {
+  width: 200px;
+	height: 90px;
+  overflow: hidden;
+  text-decoration: inherit;
+	display: inline;
+	speak: none;
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+	cursor: pointer;
+	color: #dededc;
+}
+
+div.storyphotowrapper i {
+	font-size: 5em;
+}
+
+.storyphotowrapper:hover {
+	cursor: pointer;
+	color: #5cb85c;
+}
+
+.story-content-inner {
+	padding-top: 10px;
+}

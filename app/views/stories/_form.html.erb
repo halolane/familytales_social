@@ -1,4 +1,4 @@
-<%= form_for(@story) do |f| %>
+<%= form_for @story, :html => {:multipart => true} do |f| %>
 
 <div class="storyactionbar">
   <ul class="story-actions-btns">
@@ -25,7 +25,10 @@
       </ul>
     </div>
   <% end %>
-
+    <div class="storyphotowrapper" data-toggle="tooltip" title="Add feature image">
+      <i class="icon-picture"></i>
+      <input id="storyphoto_photo" name="storyphoto[photo]" type="file">
+    </div>
     <%= f.text_area :title, :rows => 1, :placeholder => "Type your tale's title" %> 
     <%= f.text_area :lesson, :rows => 1, :placeholder => "Morale of this tale" %>
     <%= f.text_area :characters, :rows => 1, :placeholder => "Which family members are featured in this tale? (separate by comma)" %>

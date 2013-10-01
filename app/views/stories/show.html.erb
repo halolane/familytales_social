@@ -37,10 +37,12 @@
 			  </ul>
 			</div>
       <% end %>
- 
-			<img src="http://placehold.it/900x350" class="img-rounded img-responsive">
+ 			<% if not @story.storyphotos.where(:featured => true).blank? %>
+ 				<%= image_tag @story.storyphotos.where(:featured => true).first.dynamic_photo_url("900>x350"), :class => "img-rounded img-responsive" %>
+ 			<% end %>
+ 			<span class="articletext">
 			<%= if !@story.body.nil?; @story.body.html_safe; end %>
-
+			</span>
 			<%= render 'shared/socialshare' %>
 		</div>
 		<div class="col-md-8 col-md-offset-2">

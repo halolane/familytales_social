@@ -11,6 +11,10 @@ gem "friendly_id", "~> 4.0.9"
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem "font-awesome-rails"
+gem 'aws-sdk'
+gem 'asset_sync'
+gem 'dalli'
+gem 'memcachier'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -36,6 +40,7 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor', '0.0.2'
+  gem 'unicorn'
 end
 
 

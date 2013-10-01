@@ -1,4 +1,26 @@
 $(document).ready(function(){
+	$(".tooltip").tooltip();
+	$('div').tooltip({
+  	placement : 'bottom'
+  });
+	$('a').tooltip({
+  	placement : 'bottom'
+  });
+  $('button').tooltip({
+  	placement : 'right'
+  });
+  $('i').tooltip({
+  	placement : 'bottom'
+  });
+  $('input.template_thumb').tooltip({
+  	placement : 'top'
+  });
+  $('img').tooltip({
+  	placement : 'top'
+  });
+	$(".tooltip").tooltip();
+  $("a[rel=tooltip]").tooltip();
+
 	$("textarea").keyup(function(e) {
 	    while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
 	        $(this).height($(this).height()+1);

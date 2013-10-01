@@ -30,6 +30,7 @@ class StoriesController < ApplicationController
   def new
     @story =  current_user.stories.build()
     @story.save
+
     @user = User.new
     respond_to do |format|
       format.html # new.html.erb
@@ -61,6 +62,17 @@ class StoriesController < ApplicationController
   # PUT /stories/1.json
   def update
     @story = Story.find(params[:id])
+    if @story.title.nil?
+      @story.title = ""
+    end
+
+    if not params[:storyphoto].nil? and not params[:storyphoto][:photo].nil?
+      @photo = @story.storyphotos.build(:photo => params[:storyphoto][:photo])
+      @photo.toggle(:featured)
+      if ! @photo.save
+        photosaved = false
+      end
+    end
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
@@ -88,6 +100,9 @@ class StoriesController < ApplicationController
   def publish
     @story = Story.find(params[:id])
     @story.published = true
+    if @story.title.nil?
+      @story.title = ""
+    end
     @story.save
     respond_to do |format|
       format.html { redirect_to stories_url }
