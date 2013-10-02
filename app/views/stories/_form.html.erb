@@ -8,7 +8,7 @@
     <li><%= f.submit "Save Changes", :class => "btn btn-small save-story-button", :title => "Save Changes" %>
     </li>
     <li>
-      <button class="btn btn-small" style="color:black"><a href="/stories/18/preview" target="_blank" title="" data-original-title="Preview" style="color:black">Preview Changes</a></button>
+      <button class="btn btn-small" style="color:black"><%= link_to "Previes Changes", preview_story_path(@story), :target => "_blank", :title=> "Preview", :style => "color:black" %></button>
     </li>
     <li><%= link_to "Publish", publish_story_path(@story), :name => "commit", :type => "submit", :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish this Family Tale" %>
     </li>
