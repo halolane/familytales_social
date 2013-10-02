@@ -40,8 +40,8 @@
         <% if signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="header-author-image">
-          <img src="<%= current_user.tweet_avatar %>" alt=""> 
-          </span> 
+          <img src="<%= current_user.tweet_avatar %>" alt="">
+          </span> &#160; <%= current_user.name %>
          <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Profile Settings</a></li>
@@ -52,7 +52,7 @@
           </li>
           
         <% else %>
-          <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+          <li><%= link_to  "/auth/twitter" do %><i class="icon-twitter"></i> Sign in with Twitter<% end %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

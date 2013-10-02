@@ -21,9 +21,17 @@ $(document).ready(function(){
 	$(".tooltip").tooltip();
   $("a[rel=tooltip]").tooltip();
 
+  $(".fav_button").popover();
+
+  $("[data-toggle=popover]").popover()
+
 	$("textarea").keyup(function(e) {
 	    while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
 	        $(this).height($(this).height()+1);
 	    };
 	});
+
+  $(".save-story-button").click(function() {
+    $(".story-edit-status").html("Saving...");
+  });
 });

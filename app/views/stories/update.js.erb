@@ -1,0 +1,8 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".story-edit-status").html("Saved");
+		<% if photosaved = true %>
+			$('.featured-image').html('<%= image_tag @story.storyphotos.where(:featured => true).first.dynamic_photo_url("750>x350"), :class => "img-rounded img-responsive" %>');
+		<% end %>
+	<% end %>
+});

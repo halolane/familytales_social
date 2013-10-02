@@ -9,9 +9,11 @@ FamilytalesSocial::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  
+  match '/stories/:id/preview', to: 'stories#show'
+
   resources :stories do
     member {get "publish"}
+    member {get "preview"}
   end
 
   # The priority is based upon order of creation:

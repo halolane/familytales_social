@@ -1,18 +1,21 @@
-<%= form_for @story, :html => {:multipart => true} do |f| %>
-
-<div class="storyactionbar">
+<%= form_for @story, :html => {:multipart => true}, :remote => true  do |f| %>
+<div class="storyactionbar col-md-2">
   <ul class="story-actions-btns">
-    <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" } do %>
-        <button class="btn btn-small" title="Delete this post">Delete</button>
+    <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, :title => "Delete this tale" do %>
+        <button class="btn btn-small" >Delete</button>
       <% end %>
     </li>
-    <li><%= f.submit "Save Changes", :class => "btn btn-small", :title => "Save Changes" %>
+    <li><%= f.submit "Save Changes", :class => "btn btn-small save-story-button", :title => "Save Changes" %>
     </li>
-    <li><%= link_to "Publish", publish_story_path(@story), :name => "commit", :type => "submit", :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish" %>
+    <li>
+      <button class="btn btn-small" style="color:black"><a href="/stories/18/preview" target="_blank" title="" data-original-title="Preview" style="color:black">Preview Changes</a></button>
+    </li>
+    <li><%= link_to "Publish", publish_story_path(@story), :name => "commit", :type => "submit", :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish this Family Tale" %>
     </li>
   </ul>
+  <div class="story-edit-status"></div>
 </div>
-<div class="story-content-inner">
+<div class="story-content-inner col-md-8 col-md-offset-2">
 
   <% if @story.errors.any? %>
     <div id="error_explanation">
@@ -25,10 +28,22 @@
       </ul>
     </div>
   <% end %>
-    <div class="storyphotowrapper" data-toggle="tooltip" title="Add feature image">
-      <i class="icon-picture"></i>
-      <input id="storyphoto_photo" name="storyphoto[photo]" type="file">
-    </div>
+    <% if not @story.storyphotos.where(:featured => true).blank? %>
+      <span class="featured-image">
+      <%= image_tag @story.storyphotos.where(:featured => true).first.dynamic_photo_url("750>x350"), :class => "img-rounded img-responsive" %>
+      </span>
+      </br></br>
+      <div class="storyphotowrapper" data-toggle="tooltip" title="Replace featured image">
+        <i class="icon-picture"></i>
+        <input id="storyphoto_photo" name="storyphoto[photo]" type="file">
+      </div>
+    <% else %>
+        <div class="storyphotowrapper" data-toggle="tooltip" title="Add feature image">
+        <i class="icon-picture"></i>
+        <input id="storyphoto_photo" name="storyphoto[photo]" type="file">
+      </div>
+    <% end %>
+    
     <%= f.text_area :title, :rows => 1, :placeholder => "Type your tale's title" %> 
     <%= f.text_area :lesson, :rows => 1, :placeholder => "Morale of this tale" %>
     <%= f.text_area :characters, :rows => 1, :placeholder => "Which family members are featured in this tale? (separate by comma)" %>

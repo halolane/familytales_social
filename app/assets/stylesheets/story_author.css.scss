@@ -42,6 +42,7 @@ border-radius: 70px;
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
+	margin-top: -3px;
 }
 
 .header-author-image img {
@@ -139,8 +140,6 @@ input.new_user_field {
 }
 
 .storyactionbar {
-
-	
 	right: 10px;
 	pointer-events: visible;
 	-webkit-transition: opacity .3s linear;
@@ -154,20 +153,88 @@ input.new_user_field {
 	color: #b3b3b1;
 }
 
-.story-actions-btns {
+@media (min-width: 979px) {
+	.storyactionbar {
+		position: fixed;
+		left: 30px;
+	}
+	.story-actions-btns {
+		display: block;
+		li {
+			display: block;
+		}
+	}
+}
+
+@media (max-width: 978px) {
+	.storyactionbar {
+		position: relative;
+		left: 0;
+	}
+	.story-actions-btns {
+		display: inline-block;
+		li {
+			display: inline-block;
+		}
+	}
+}
+
+.showstoryactionbar {
+	right: 10px;
+	pointer-events: visible;
+	-webkit-transition: opacity .3s linear;
+	-moz-transition: opacity .3s linear;
+	-ms-transition: opacity .3s linear;
+	-o-transition: opacity .3s linear;
+	transition: opacity .3s linear;
+	font-size: 14px;
+	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 400;
+	color: #b3b3b1;
+}
+
+.show-story-actions-btns {
 	display: inline-block;
 	vertical-align: top;
 	font-size: 14px;
-font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
-font-weight: 400;
-color: #b3b3b1;
-padding: 0;
-list-style: none;
-list-style-image: none;
+	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 400;
+	color: #b3b3b1;
+	padding: 0;
+	list-style: none;
+	list-style-image: none;
+
+	padding-top: 6px;
+	padding-bottom: 8px;
 	li {
 		margin-right: 4px;
-	display: inline-block;
+		display: inline-block;
+		padding-top: 6px;
 	}
+
+}
+
+.story-actions-btns {
+	/*display: inline-block;*/
+	vertical-align: top;
+	font-size: 14px;
+	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 400;
+	color: #b3b3b1;
+	padding: 0;
+	list-style: none;
+	list-style-image: none;
+
+	border-top: 1px solid #dededc;
+	border-bottom: 1px solid #dededc;
+	padding-top: 6px;
+	padding-bottom: 8px;
+	li {
+		margin-right: 4px;
+		/*display: inline-block;*/
+		padding-top: 6px;
+	}
+
 }
 
 .socialshare {
@@ -211,4 +278,10 @@ border-radius: 6px;
 .storylesson {
 	padding-top: 10px;
 	border-bottom: 1px solid #dededc;
+}
+
+.story-edit-status {
+	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-weight: 700;
+	color: #666665;
 }

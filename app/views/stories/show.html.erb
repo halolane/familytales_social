@@ -10,7 +10,7 @@
 	    </div>
     	<div class="sidebar-item story-characters">
     		<p><strong>This tale features</strong></p>
-    			<% if @story.characters != "" %>
+    			<% if not @story.characters.nil? and @story.characters != "" %>
     				<% @story.characters.split(',').each do |c| %>
     					<p class="storycharacter"><%= c %></p></br>
     				<% end %>
@@ -26,8 +26,8 @@
        <!-- <h3 class="subtitle"><em><%= @story.subtitle %></em></h3> -->
       <h5><span class="name"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %></span> <span class="text-muted"> | <%= @story.updated_at.strftime("%b %d, %Y") %></span></h5></span>
       <% if current_user?(@story.user) %>
-      <div class="storyactionbar">
-			  <ul class="story-actions-btns">
+      <div class="showstoryactionbar">
+			  <ul class="show-story-actions-btns">
 			    <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" } do %>
 			        <button class="btn btn-small" title="Delete this post">Delete</button>
 			      <% end %>
@@ -38,7 +38,7 @@
 			</div>
       <% end %>
  			<% if not @story.storyphotos.where(:featured => true).blank? %>
- 				<%= image_tag @story.storyphotos.where(:featured => true).first.dynamic_photo_url("900>x350"), :class => "img-rounded img-responsive" %>
+ 				<%= image_tag @story.storyphotos.where(:featured => true).first.dynamic_photo_url("750>x350"), :class => "img-rounded img-responsive" %>
  			<% end %>
  			<span class="articletext">
 			<%= if !@story.body.nil?; @story.body.html_safe; end %>

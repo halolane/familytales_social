@@ -67,16 +67,26 @@ class StoriesController < ApplicationController
     end
 
     if not params[:storyphoto].nil? and not params[:storyphoto][:photo].nil?
+      if not @story.storyphotos.where(:featured => true).blank? 
+        @featuredphotos = @story.storyphotos.where(:featured => true)
+        @featuredphotos.each do |fphoto|
+          fphoto.photo.destroy
+          fphoto.destroy
+        end
+      end
+
       @photo = @story.storyphotos.build(:photo => params[:storyphoto][:photo])
       @photo.toggle(:featured)
+      @photosaved = true
       if ! @photo.save
-        photosaved = false
+        @photosaved = false
       end
     end
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to edit_story_path(@story), notice: 'Story was successfully updated.' }
+        format.js
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

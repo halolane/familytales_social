@@ -32,5 +32,6 @@ class Storyphoto < ActiveRecord::Base
 	  def destroy_image
 	    self.photo.clear
 	    self.photo.destroy
+	    self.save
 	  end
 end
