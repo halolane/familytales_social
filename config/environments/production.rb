@@ -21,6 +21,7 @@ FamilytalesSocial::Application.configure do
   config.assets.digest = true
   config.assets.enabled = true
   config.assets.initialize_on_precompile = true
+  config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
   
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
