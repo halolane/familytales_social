@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged, :sequence_separator => ''
-  attr_accessible :email, :name, :password, :password_confirmation, :bio, :avatar, :slug, :username
+  attr_accessible :name, :password, :password_confirmation, :bio, :avatar, :slug, :username
   has_secure_password
 
 
   validates :name, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, 
-                    uniqueness: { case_sensitive: false }
-  
 
   has_many :stories, dependent: :destroy
 
