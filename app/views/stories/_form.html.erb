@@ -47,8 +47,8 @@
     <%= f.text_area :title, :rows => 1, :placeholder => "Type your tale's title" %> 
     <%= f.text_area :lesson, :rows => 1, :placeholder => "Morale of this tale" %>
     <%= f.text_area :characters, :rows => 1, :placeholder => "Which family members are featured in this tale? (separate by comma)" %>
-    <%= text_area_tag :editor, if !@story.body.nil?; @story.body; end, :class => "tinymce", :rows => 20, :cols => 40 %>
 
+    <textarea cols="40" id="story_body" class="tinymce" name="story[body]" placeholder="Type your family tale" rows="20" tabindex="-1" style="width:100%"><%= if !@story.body.nil?; @story.body; end %> </textarea>
   <div class="actions">
 
     
