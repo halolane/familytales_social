@@ -29,6 +29,7 @@ class StoriesController < ApplicationController
   # GET /stories/new.json
   def new
     @story =  current_user.stories.build()
+    @story.title = ""
     @story.save
 
     @user = User.new

@@ -8,7 +8,7 @@
     <li><%= f.submit "Save Changes", :class => "btn btn-small save-story-button", :title => "Save Changes" %>
     </li>
     <li>
-      <button class="btn btn-small" style="color:black"><%= link_to "Previes Changes", preview_story_path(@story), :target => "_blank", :title=> "Preview", :style => "color:black" %></button>
+      <button class="btn btn-small" style="color:black"><%= link_to "Preview Changes", preview_story_path(@story), :target => "_blank", :title=> "Preview", :style => "color:black" %></button>
     </li>
     <li><%= link_to "Publish", publish_story_path(@story), :name => "commit", :type => "submit", :class => "btn btn-primary btn-small btn-publish green_button", :title=> "Publish this Family Tale" %>
     </li>
@@ -47,7 +47,8 @@
     <%= f.text_area :title, :rows => 1, :placeholder => "Type your tale's title" %> 
     <%= f.text_area :lesson, :rows => 1, :placeholder => "Morale of this tale" %>
     <%= f.text_area :characters, :rows => 1, :placeholder => "Which family members are featured in this tale? (separate by comma)" %>
-    <textarea cols="40" id="story_body" name="story[body]" placeholder="Type your family tale" rows="20" tabindex="-1" style="width:100%"><%= if !@story.body.nil?; @story.body; end %> </textarea>
+    <%= text_area_tag :editor, if !@story.body.nil?; @story.body; end, :class => "tinymce", :rows => 20, :cols => 40 %>
+
   <div class="actions">
 
     
