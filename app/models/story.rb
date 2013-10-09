@@ -3,4 +3,6 @@ class Story < ActiveRecord::Base
 
   belongs_to :user
   has_many :storyphotos, dependent: :destroy
+
+  default_scope order: 'stories.updated_at DESC'
 end
