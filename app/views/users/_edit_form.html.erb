@@ -17,20 +17,23 @@
       <%= f.text_field :name, :class => "new_user_field"%>
     </div>
   </fieldset>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password, :class => "new_user_field", :type => "password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation, :type => "password" %>
-  </div>
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
+
+  <fieldset class="fields">
+    <label class="control-label" for="user_name">Twitter Username</label>
+    <div class="controls">
+      <%= f.text_field :username, :class => "new_user_field"%>
+    </div>
+  </fieldset>
+
+  <fieldset class="fields">
+    <label class="control-label" for="user_name">Bio</label>
+    <div class="controls">
+      <%= f.text_area :bio, :class => "new_user_field input-xlarge"%>
+    </div>
+  </fieldset>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-small btn-primary green_button" %>
   </div>
 
 <% end %>

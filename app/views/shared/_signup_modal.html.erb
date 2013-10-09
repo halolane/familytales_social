@@ -13,7 +13,6 @@
     		<%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     	  	<%= f.text_field :name, :class => "new_user_field",:placeholder => "Name" %></br>
-    	  	  	<%= f.text_field :email, :type => "email", :class => "new_user_field", :placeholder => "Email" %></br>
     	  	<%= f.password_field :password, :class => "new_user_field",:placeholder => "Password" %>
           <%= f.password_field :password_confirmation, :class => "new_user_field",:placeholder => "Confirm Password" %>
     	</div>

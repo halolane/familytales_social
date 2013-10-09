@@ -1,6 +1,10 @@
-<h1>Editing user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<% provide(:title, "Settings - FamilyTales") %>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    	<h1 class="heading"><strong>Settings</strong></h1>
+    	<h5><span class="text-muted">This information appears on your public profile, search results, and beyond.</span></h5>
+			<%= render 'edit_form' %>
+		</div>
+	</div>
+</div>
