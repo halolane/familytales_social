@@ -79,7 +79,7 @@ background: #f2f2f0;
 	margin-top: 20px;
 }
 
-.story-author-card, .user-card {
+.story-author-card {
 	position: relative;
 	border-bottom: 1px solid #dededc;
 	border-top: 1px solid #dededc;
@@ -262,4 +262,15 @@ border-radius: 6px;
 	font-family: "freight-sans-pro","Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
 	font-weight: 700;
 	color: #666665;
+}
+
+.user-article-list {
+	border-left: 1px solid #dededc;
+	padding-left: 8.333333333333332%;
+}
+
+.storywrappertitle {
+	color: #666665;
+	font-weight: 300;
+
 }

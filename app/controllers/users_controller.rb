@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @stories = @user.stories
+    @publishedstories = @user.stories.where(:published => true)
+    @draftstories = @user.stories.where('published != ?', true)
     
     respond_to do |format|
       format.html # show.html.erb

@@ -1,11 +1,11 @@
-<div class="container" style="padding-top: 80px">
+<div class="container">
   <div class="row">
 <p id="notice"><%= notice %></p>
     <div class="col-md-2 user-side">
     	<div class="user-card">
     		<div class="userImageWrapper">
     		<span class="user-image">
-		    <%= gravatar_for @user %>
+		    <img src="<%= @user.tweet_avatar %>" alt="">
 		    </span>
 		    </div>
 		    <div class="user-info"><%= link_to @user, :class => "user-name", :title => "Go to the profile of " + @user.name do %><%= @user.name %><% end %>
@@ -14,42 +14,54 @@
 		    </p>
 
 		    </div>
+        <% if current_user?(@user) %>
+          <%= link_to edit_user_path(current_user), :title => "Edit profile" do %>
+            <button class="btn btn-small">Edit profile</button>
+          <% end %> 
+        <% end %>
 	    </div>
 
 <!-- Insert edit profile here -->
     </div>
-    <div class="col-md-12 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-1 user-article-list">
+
+      <% if not @publishedstories.blank? %>
     	<div class="row stories">
-      <% @counter = 0 %>
-  <% @covercolor = ['#47B099','#6b9abb','#ce5346','#e8aa4a'] %>
-  <% @stories.each do |story| %>
-    
-    <div class="col-md-4">
-      <%= link_to story do %>
-      <div class="storyCoverTitle">
-        <div class="story-title">
-          <h3 class="covertitle"><%= story.title %></h3>
-          <h4 class="coversubtitle"><%= story.subtitle %></h4>
-        </div>
-      </div>
-      <div class="storyCoverWrapper" style="background-color:<%= @covercolor.sample%>">
-	        <span class="hoverMask"></span>
+        <h1 class="storywrappertitle">Published tales</h1>
+
+        <% @publishedstories.each do |story| %>
+
+          <div class="storywrapper">
+            
+          <%= link_to story do %>
+              <h3 class="covertitle"><%= story.title %></h3>
+          <% end %>
+            <h5> <span class="text-muted"><%= story.updated_at.strftime("%b %d, %Y") %></span></h5>
+            <div class="storypreview"><%= if !story.body.nil?; truncate(strip_tags(story.body), :length => 250).html_safe; end %></div>
+          </div>
+        <% end %>
+  		</div>
+      <% end %>
+      </br>
+      <% if not @draftstories.blank? %>
+      <div class="row stories">
+        <h1 class="storywrappertitle">Drafts</h1>
+        <% @draftstories.each do |story| %>
+        
+          <div class="storywrapper">
+            
+          <%= link_to story do %>
+              <h3 class="covertitle"><%= story.title %></h3>
+          <% end %>
+            <h5> <span class="text-muted"><%= story.updated_at.strftime("%b %d, %Y") %></span></h5>
+            <div class="storypreview"><%= if !story.body.nil?; truncate(strip_tags(story.body), :length => 250).html_safe; end %></div>
+          </div>
+        <% end %>
       </div>
       <% end %>
-      
-    </div>
-    <% @counter = @counter + 1 %>
-    <% if @counter % 2 == 0 %>
       </div>
-      <div class="row stories">
-    <% end %>
- 
-  <% end %>
-  		</div>
 		</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 </div>
       
 </div><!-- /.container -->

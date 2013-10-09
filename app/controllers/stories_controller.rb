@@ -30,6 +30,10 @@ class StoriesController < ApplicationController
   def new
     @story =  current_user.stories.build()
     @story.title = ""
+    @story.body = ""
+    @story.lesson = ""
+    @story.characters = ""
+    @story.published = false
     @story.save
 
     @user = User.new
