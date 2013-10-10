@@ -68,7 +68,9 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user]) 
         if @email.nil? 
           @email = Email.new(:email => params[:email][:email], :user_id => @user.id, :notify => true, :digest => true)
-          @email.save
+          if @email.save
+            mailchimp_save
+          end
         else
           @email.update_attributes(params[:email])
         end
@@ -112,5 +114,24 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def mailchimp_save
+      mailchimp_api_key = "9d733223f7c559a0b6f133d7c604ca86-us7"
+      mailchimp_list_id = "6abaad37e4"
+      @email = current_user.email
+      first_name = @user.name.split(' ').first
+      last_name = @user.name.split(' ').last
+      g = Gibbon::API.new(mailchimp_api_key)
+      g.throws_exceptions = false
+
+      g.lists.subscribe({ :id => mailchimp_list_id, 
+                          :email => {:email => @email.email}, 
+                          :double_optin => false, 
+                          :send_welcome => false, 
+                          :merge_vars => {:FNAME => first_name, 
+                                          :LNAME => last_name}
+                        })
+
     end
 end

@@ -17,7 +17,7 @@ gem 'dalli'
 gem 'memcachier'
 gem "remotipart", "~> 1.0.5"
 gem 'tinymce-rails'
-
+gem 'gibbon'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
