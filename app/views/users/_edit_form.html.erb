@@ -19,6 +19,20 @@
   </fieldset>
 
   <fieldset class="fields">
+    <label class="control-label" for="user_name">Email</label>
+    <div class="controls">
+      <% if current_user.email.nil? %>
+        <input class="new_user_field" id="email_email" name="email[email]" size="30" type="text" value="" type="email">
+      <% else %>
+        <input class="new_user_field" id="email_email" name="email[email]" size="30" type="text" value="<%= @email.email %>" type="email">
+      <% end %>
+      <p>
+        Email will not be publicly displayed. 
+      </p>
+    </div>
+  </fieldset>
+
+  <fieldset class="fields">
     <label class="control-label" for="user_name">Twitter Username</label>
     <div class="controls">
       <%= f.text_field :username, :class => "new_user_field"%>

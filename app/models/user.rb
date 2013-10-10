@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => :slugged, :sequence_separator => ''
+  friendly_id :username, :use => :slugged, :sequence_separator => ''
   attr_accessible :name, :password, :password_confirmation, :bio, :avatar, :slug, :username
   has_secure_password
 
@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
 
   has_many :stories, dependent: :destroy
+  has_one :email, dependent: :destroy
 
   has_attached_file :avatar, :source_file_options =>  {:all => '-auto-orient'}, :styles => Proc.new { |photo| photo.instance.styles }
 

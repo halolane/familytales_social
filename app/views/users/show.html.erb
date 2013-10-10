@@ -27,7 +27,7 @@
 
       <% if not @publishedstories.blank? %>
     	<div class="row stories">
-        <h1 class="storywrappertitle">Published tales</h1>
+        <h1 class="storywrappertitle">Latest tales</h1>
 
         <% @publishedstories.each do |story| %>
 
@@ -43,7 +43,7 @@
   		</div>
       <% end %>
       </br>
-      <% if not @draftstories.blank? %>
+      <% if current_user?(@user) and not @draftstories.blank? %>
       <div class="row stories">
         <h1 class="storywrappertitle">Drafts</h1>
         <% @draftstories.each do |story| %>

@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :signed_in_user, only: [:index, :destroy, :email]
+
   def index
     @users = User.all
 
@@ -37,6 +40,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @email = @user.email
   end
 
   # POST /users
@@ -59,15 +63,36 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
+    @email = @user.email
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(params[:user]) 
+        if @email.nil? 
+          @email = Email.new(:email => params[:email][:email], :user_id => @user.id, :notify => true, :digest => true)
+          @email.save
+        else
+          @email.update_attributes(params[:email])
+        end
+        
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def email
+
+    if current_user.email.nil?
+      @email = Email.new
+    else
+      @email = current_user.email
+    end
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
     end
   end
 
@@ -82,4 +107,10 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private 
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 end

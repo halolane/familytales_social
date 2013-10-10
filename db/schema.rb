@@ -11,12 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009163041) do
+ActiveRecord::Schema.define(:version => 20131010155535) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.boolean  "notify"
+    t.boolean  "digest"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,0 +1,27 @@
+<% provide(:title, "Email Settings - FamilyTales") %>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    	<h1 class="heading"><strong>Email</strong></h1>
+    	<h5><span class="text-muted">Almost there. Enter your email address to get started on FamilyTales.</span></h5>
+			<%= form_for(@email) do |f| %>
+				<fieldset class="fields">
+			    <label class="control-label" for="user_name">Email</label>
+			    <div class="controls">
+			      <% if current_user.email.nil? %>
+		        <input class="new_user_field" id="email_email" name="email[email]" size="30" type="text" value="" type="email">
+		      <% else %>
+		        <input class="new_user_field" id="email_email" name="email[email]" size="30" type="text" value="<%= @email.email %>" type="email">
+		      <% end %>
+			    </div>
+			  </fieldset>
+
+			  <div class="actions">
+			  	<div class="controls ">
+			    <%= f.submit "Continue", :class => "btn btn-small btn-primary green_button save-changes-button" %>
+			    </div>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+</div>

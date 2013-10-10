@@ -3,6 +3,7 @@ FamilytalesSocial::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :stories
+  resources :emails
   root to: 'stories#index'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
@@ -10,6 +11,10 @@ FamilytalesSocial::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/stories/:id/preview', to: 'stories#show'
+  
+  resources :users do
+    member {get "email"}
+  end
 
   resources :stories do
     member {get "publish"}

@@ -47,14 +47,14 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "You can only view that page if you're signed in."
+      redirect_to root_url, notice: "You can only view that page if you're signed in."
     end
   end
 
   def signed_in_user_or_invited(token)
     unless ( signed_in? or is_invited?(token) )
       store_location
-      redirect_to signin_url, notice: "Please sign in"
+      redirect_to root_url, notice: "Please sign in"
     end
   end
 

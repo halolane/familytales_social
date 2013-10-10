@@ -9,8 +9,12 @@ class SessionsController < ApplicationController
     # if @user && @user.authenticate(params[:session][:password])
     if @user 
       sign_in @user
-      flash[:success] = "Welcome back to FamilyTales."
-      redirect_to root_url
+      if @user.email.nil?
+        redirect_to email_user_path(@user)
+      else
+        flash[:success] = "Welcome back to FamilyTales."
+        redirect_to root_url
+      end
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
