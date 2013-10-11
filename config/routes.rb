@@ -1,4 +1,7 @@
 FamilytalesSocial::Application.routes.draw do
+  resources :favorites
+
+
   resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -17,6 +20,8 @@ FamilytalesSocial::Application.routes.draw do
   end
 
   resources :stories do
+    member {get "favorite"}
+    member {get "unfavorite"}
     member {get "publish"}
     member {get "preview"}
   end

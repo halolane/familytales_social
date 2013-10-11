@@ -1,0 +1,9 @@
+<% if current_user.favorite?(@story) %>
+	<%= link_to unfavorite_story_path(@story), :class => "fav-link", :rel => "tooltip", :placeholder => "Like this story", :remote => true  do %>
+		<button class="btn btn-primary unfav_action fav_button">Faved This Tale</button>
+	<% end %>
+<% else %>
+	<%= link_to favorite_story_path(@story), :class => "unfav-link", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
+		<button class="btn btn-primary fav_action fav_button">Fav This Tale</button>
+	<% end %>
+<% end %> 

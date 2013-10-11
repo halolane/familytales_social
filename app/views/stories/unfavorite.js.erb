@@ -1,0 +1,5 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".FavThis").html("<%= escape_javascript render('fav_button') %>");
+	<% end %>
+});

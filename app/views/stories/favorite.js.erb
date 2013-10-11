@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".FavThis").bind("ajax:success", function() { 
+	    $(this).closest('span').html("<%= escape_javascript render('shared/favform') %>");
+	  });
+	<% end %>
+});

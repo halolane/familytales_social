@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
 
   has_many :stories, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one :email, dependent: :destroy
 
   has_attached_file :avatar, :source_file_options =>  {:all => '-auto-orient'}, :styles => Proc.new { |photo| photo.instance.styles }
@@ -43,8 +44,25 @@ class User < ActiveRecord::Base
       @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
     end
   end
+
   def normalize_friendly_id(string)
     super.gsub("-", "")
+  end
+
+  def favorite?(story)
+    not favorites.blank? or favorites.exists?(story_id: story.id)
+  end
+
+  def favstory!(story)
+    if favorites.blank? or not favorites.exists?(story_id: story.id)
+      @favorite = favorites.create!(story_id: story.id)
+    end
+  end
+
+  def unfavstory!(story)
+    if not favorites.blank? and favorites.exists?(story_id: story.id)
+      favorites.find_by_story_id(story.id).destroy 
+    end
   end
 
   def dynamic_style_format_symbol

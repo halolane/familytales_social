@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :signed_in_user, only: [:destroy, :edit, :create]
+  before_filter :signed_in_user, only: [:destroy, :edit, :create, :favorite, :unfavorite]
   before_filter :correct_user_or_published, only: :show
   before_filter :correct_user,   only: :edit
   # GET /stories
@@ -122,6 +122,33 @@ class StoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to stories_url }
       format.json { head :no_content }
+    end
+  end
+
+  def favorite 
+    @story = Story.find(params[:id])
+    @favstory = current_user.favstory!(@story)
+
+    respond_to do | format |   
+      if @favstory.save 
+        format.html { redirect_to @story } 
+        format.js 
+      else
+        format.html { redirect_to @story, notice: 'Unable to like story.' } 
+      end
+    end
+  end
+
+  def unfavorite 
+    @story = Story.find(params[:id])
+    
+    respond_to do | format |   
+      if current_user.unfavstory!(@story)
+        format.html { redirect_to @story } 
+        format.js 
+      else
+        format.html { redirect_to @story, notice: 'Unable to unfav story.' } 
+      end
     end
   end
 
