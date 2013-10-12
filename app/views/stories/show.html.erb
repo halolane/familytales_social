@@ -45,24 +45,62 @@
 			</span>
 			<%= render 'shared/socialshare' %>
 		</div>
-		<div class="col-md-8 col-md-offset-2">
-			<div class="story-author-card">
-				<div class="col-md-2">
-    		<%= link_to @storyauthor, :class => "story-author-image", :title => "Go to the profile of " + @storyauthor.name do %>
-		    <img src="<%= @storyauthor.tweet_avatar %>" alt="">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="story-author-card">
+					<div class="col-md-2">
+	    		<%= link_to @storyauthor, :class => "story-author-image", :title => "Go to the profile of " + @storyauthor.name do %>
+			    <img src="<%= @storyauthor.tweet_avatar %>" alt="">
+			    <% end %>
+			    </div>
+			    <div class="col-md-8">
+				    <div class="story-author-info"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %>
+				    <p>
+				    	<%= @storyauthor.bio %>
+				    </p>
+				    </div>
+			    </div>
+		    </div>
+		    </br>
+		    <% if not signed_in? %>
+		    <div class="signupnow" style="text-align:center">
+		    	<a href="#signup_modal" class="signup_modal" rel="tooltip" data-toggle="modal" data-keyboard="true" ><button type="button" class="btn btn-success" style="text-align:center">
+		    	<%= link_to  "/auth/twitter", :style => "color: white" do %><i class="icon-twitter"></i> Write your own FamilyTales now<% end %></button></a>
+	    	</div>
 		    <% end %>
-		    </div>
-		    <div class="col-md-8">
-		    <div class="story-author-info"><%= link_to @storyauthor, :class => "story-author-name", :title => "Go to the profile of " + @storyauthor.name do %><%= @storyauthor.name %><% end %>
-		    <p>
-		    	<%= @storyauthor.bio %>
-		    </p>
-		    </div>
-		    </div>
-	    </div>
 	    </div>
 		</div>
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
+			<h1 class="storywrappertitle" style="text-align:center">Most popular tales</h1>
+			<div class="row stories">
+			<% @counter = 0 %>
+
+			<% @covercolor = ['rgba(71, 176, 153, 0.33)','rgba(107, 154, 187, 0.33)','rgba(206, 83, 70,0.33)','rgba(232, 170, 74, 0.33)'] %>
+				<% @popularstories.each do |story| %>
+    
+    <div class="col-md-6">
+      <%= link_to story do %>
+      <div class="storyCoverTitle">
+        <div class="story-title">
+          <h3 class="covertitle"><%= story.title %></h3>
+          <h4 class="coversubtitle"><%= story.user.name %></h4>
+        </div>
+      </div>
+      <div class="storyCoverWrapper" style="background:<%= @covercolor.sample%>">
+      <% if not story.storyphotos.where(:featured => true).blank? %>
+        <%= image_tag story.storyphotos.where(:featured => true).first.dynamic_photo_url("350x300#"), :class => "storycover" %>
+      <% end %>
+        <span class="hoverMask" ></span>
+      </div>
+      
+      <% end %>
+    </div>
+    <% @counter = @counter + 1 %>
+    <% if @counter % 2 == 0 %>
+      </div>
+      <div class="row stories">
+    <% end %>
+  <% end %>
+			</div>
 			<%= render 'layouts/footer' %>
 		</div>
 	</div>

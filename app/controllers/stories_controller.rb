@@ -19,6 +19,13 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @user = User.new
     @storyauthor = @story.user
+    @popularstories = Story.where(published: true).
+                          select("stories.id, stories.title, stories.user_id, stories.body, count(favorites.id) AS fav_count"). 
+                          joins(:favorites).
+                          group("stories.id").
+                          order("fav_count DESC").
+                          limit(6)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @story }

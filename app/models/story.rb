@@ -6,4 +6,8 @@ class Story < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
 
   default_scope order: 'stories.updated_at DESC'
+
+  def favcount
+  	favorites.count
+  end
 end

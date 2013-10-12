@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def favorite?(story)
-    not favorites.blank? or favorites.exists?(story_id: story.id)
+    not favorites.blank? and favorites.exists?(story_id: story.id)
   end
 
   def favstory!(story)
