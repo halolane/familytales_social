@@ -1,4 +1,8 @@
 FamilytalesSocial::Application.routes.draw do
+  get "static_pages/about"
+
+  get "static_pages/privacy"
+
   resources :favorites
 
 
@@ -13,8 +17,10 @@ FamilytalesSocial::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/about',   to: 'static_pages#about'
+  match '/privacy',   to: 'static_pages#privacy'
   match '/stories/:id/preview', to: 'stories#show'
-  
+
   resources :users do
     member {get "email"}
   end

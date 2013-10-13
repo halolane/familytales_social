@@ -1,0 +1,50 @@
+<% provide(:title, "About FamilyTales") %>
+
+<div class="container" >
+  <div class="row">
+    <div class="col-md-2 story-side">
+    	<div class="sidebar-item storylesson">
+	    	<p><strong>About FamilyTales</strong></p>
+	    	<p>FamilyTales is the best place where family stories can be read, written and celebrated.
+	    	</p>
+	    </div>
+    	<!-- <div class="sidebar-item story-characters">
+    		<p><strong>Features</strong></p>
+    			
+				<p class="storycharacter"></p></br>
+				<p class="storycharacter"></p></br>
+	    </div> -->
+	    
+    </div>
+    <div class="col-md-8">
+    	
+      <h1 class="heading"><strong>Welcome To FamilyTales</strong></h1>
+      <h5><span class="text-muted">Stories for families by families</span></h5></span>
+      <img class="img-rounded img-responsive" src="/assets/familymockup.jpg" />
+ 			<span class="articletext">
+				<p>Storytelling has always been part of our families. Whether it's around dinners, fireplaces or reunions, family stories are told to by grandparents, parents and children to entertain, edify and educate.</p>
+				<p>We tell our family stories because we know that those who forget the past are doomed to repeat it. Like the fairy tales our parents used to read us, some of our own family stories are full of moral lessons that future generations can learn from.</p>
+				<p>Our family stories also help us feel connected with our past and feel like we belong to something bigger than ourselves. In this <a href="http://www.nytimes.com/2013/03/17/fashion/the-family-stories-that-bind-us-this-life.html" target="_blank">The New York Times article</a>, writer Bruce Fieler argues that the single most important thing you can do for your family may be the simplest of all: develop a strong intergenerational family narrative.</p>
+				<p>That's why we created FamilyTales. Our big vision is to create the biggest community focused on celebrating and preserving family legacies through stories. FamilyTales is where family stories can be treasured, passed on for generations or even shared to the rest of the world.</p>
+				<p>You are in complete control of the <a href="/privacy">privacy</a> of your stories, whether you want them to be shared to the world, or just privately shared and celebrated with a few of your family members.</p>
+				<p>What are you waiting for? Start writing and celebrating your family stories now! </p>
+			</span>
+			</br>
+			<div class="socialshare">
+				<span class="FavThis">
+					<button type='button' class='btn fav_action fav_button'><a href='/auth/twitter' style='color: white'><i class='icon-twitter'></i> Sign in with Twitter</a></button>
+				</span>
+				<span class="facebook">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=<%= u request.original_url%>" target="_blank">
+					  <i class="icon icon-facebook"></i>
+					</a>
+				</span>
+				<span class="twitter">
+					<a href="https://twitter.com/share?text=<%= u ( "Welcome To FamilyTales by @myFamilyTales ") %>&url=<%= u request.original_url%>" target="_blank"><i class="icon icon-twitter icon-twitter-dark"></i></a>
+				</span>
+			</div>
+			</br>
+		</div>
+	</div>
+      
+</div><!-- /.container -->
