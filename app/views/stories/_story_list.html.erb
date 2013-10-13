@@ -1,0 +1,21 @@
+<% @covercolor = ['rgba(71, 176, 153, 0.33)','rgba(107, 154, 187, 0.33)','rgba(206, 83, 70,0.33)','rgba(232, 170, 74, 0.33)'] %>
+<% @stories.each do |story| %>
+  
+  <div class="col-md-4">
+    <%= link_to story do %>
+    <div class="storyCoverTitle">
+      <div class="story-title">
+        <h3 class="covertitle"><%= story.title %></h3>
+        <h4 class="coversubtitle"><%= story.user.name %></h4>
+      </div>
+    </div>
+    <div class="storyCoverWrapper" style="background:<%= @covercolor.sample%>">
+    <% if not story.storyphotos.where(:featured => true).blank? %>
+      <%= image_tag story.storyphotos.where(:featured => true).first.dynamic_photo_url("350x300#"), :class => "storycover" %>
+    <% end %>
+      <span class="hoverMask" ></span>
+    </div>
+    
+    <% end %>
+  </div>
+<% end %>

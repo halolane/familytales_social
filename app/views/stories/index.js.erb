@@ -1,0 +1,6 @@
+$('#stories').append("<%= escape_javascript render('stories/story_list') %>");
+<% if @stories.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@stories) %>');
+<% else %>
+  $('.apple_pagination').remove();
+<% end %>

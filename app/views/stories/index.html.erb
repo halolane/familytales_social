@@ -1,6 +1,5 @@
-<div class="container main">
-  <div class="row stories">
-
+<div class="container main"  >
+  <div  id="stories" class="row stories">
 
     <!-- <div class="col-md-4">
       <div class="tile signup">
@@ -18,7 +17,6 @@
         </form>
       </div>
     </div> -->
-  <% @counter = 0 %>
   <% @covercolor = ['rgba(71, 176, 153, 0.33)','rgba(107, 154, 187, 0.33)','rgba(206, 83, 70,0.33)','rgba(232, 170, 74, 0.33)'] %>
   <% @stories.each do |story| %>
     
@@ -36,18 +34,9 @@
       <% end %>
         <span class="hoverMask" ></span>
       </div>
-      
       <% end %>
-    </div>
-    <% @counter = @counter + 1 %>
-    <% if @counter % 3 == 0 %>
-      </div>
-      <div class="row stories">
-    <% end %>
+    </div>    
   <% end %>
-
-
-<br />
 
   </div>
   <div class="apple_pagination">
