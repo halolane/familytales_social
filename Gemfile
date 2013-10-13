@@ -18,6 +18,7 @@ gem 'memcachier'
 gem "remotipart", "~> 1.0.5"
 gem 'tinymce-rails'
 gem 'gibbon'
+gem 'will_paginate', '~> 3.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

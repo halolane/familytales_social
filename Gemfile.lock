@@ -200,6 +200,7 @@ GEM
       raindrops (~> 0.7)
     uuidtools (2.1.4)
     version (1.0.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -232,3 +233,4 @@ DEPENDENCIES
   tinymce-rails
   uglifier (>= 1.0.3)
   unicorn
+  will_paginate (~> 3.0)

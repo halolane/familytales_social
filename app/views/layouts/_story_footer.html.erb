@@ -1,0 +1,10 @@
+ <div class="footer">
+    <br>
+
+    <% if not signed_in? %>
+    	<a href="#signup_modal" class="signup_modal" rel="tooltip" data-toggle="modal" data-keyboard="true"><button type="button" class="btn btn-success">
+    	<%= link_to  "/auth/twitter", :style => "color: white" do %><i class="icon-twitter"></i> Sign in with Twitter<% end %></button></a>
+    <% end %>
+    <h2>More stories to come ... </h2>
+
+  </div>

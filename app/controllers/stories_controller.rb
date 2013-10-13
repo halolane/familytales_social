@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.where(published: true)
+    @stories = Story.where(published: true).paginate(page: params[:page], :per_page => 6)
     @user = User.new
     respond_to do |format|
       format.html # index.html.erb
