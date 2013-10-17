@@ -75,8 +75,8 @@ class StoriesController < ApplicationController
   # PUT /stories/1.json
   def update
     @story = Story.find(params[:id])
-    if @story.title.nil?
-      @story.title = ""
+    if @story.title.nil? or @story.title == ""
+      @story.title = "New Story Draft"
     end
 
     if not params[:storyphoto].nil? and not params[:storyphoto][:photo].nil?
