@@ -6961,8 +6961,8 @@ a:hover {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/assets/fontawesome-webfont.eot");
-  src: url("/assets/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fontawesome-webfont.woff") format("woff"), url("/assets/fontawesome-webfont.ttf") format("truetype"), url("/assets/fontawesome-webfont.svg#fontawesomeregular") format("svg");
+  src: url("/assets/fontawesome-webfont-bb74e4541b067443fe2d26bc517ef663.eot");
+  src: url("/assets/fontawesome-webfont-bb74e4541b067443fe2d26bc517ef663.eot?#iefix") format("embedded-opentype"), url("/assets/fontawesome-webfont-91b4ad3cd810c4d21ddebcd77323b3dd.woff") format("woff"), url("/assets/fontawesome-webfont-fafb61717b2d1f7fad55e41b600d8472.ttf") format("truetype"), url("/assets/fontawesome-webfont-bdd20e2d3754629ea288c28900304158.svg#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }

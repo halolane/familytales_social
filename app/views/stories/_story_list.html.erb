@@ -9,7 +9,7 @@
         <h4 class="coversubtitle"><%= story.user.name %></h4>
       </div>
     </div>
-    <div class="storyCoverWrapper" style="background:<%= @covercolor.sample%>">
+    <div class="storyCoverWrapper">
     <% if not story.storyphotos.where(:featured => true).blank? %>
       <%= image_tag story.storyphotos.where(:featured => true).first.dynamic_photo_url("350x300#"), :class => "storycover" %>
     <% end %>
