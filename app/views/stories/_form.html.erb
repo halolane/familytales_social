@@ -1,4 +1,5 @@
 <%= form_for @story, :html => {:multipart => true}, :remote => true  do |f| %>
+<input name="_method" type="hidden" value="put" />
 <div class="storyactionbar col-md-2">
   <ul class="story-actions-btns">
     <li><%= link_to @story, method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, :title => "Delete this tale" do %>

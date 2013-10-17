@@ -1,4 +1,27 @@
 <% provide(:title, "Editing Story") %>
+<script type="text/javascript">
+  jQuery(function($) {
+    $(".edit_story").autosave({
+      callbacks: {
+        trigger: ["change", function() {
+          var self = this;
+
+          $("[name=save]").click(function() {
+            self.save();
+          });
+        }],
+        save: {
+          method: "ajax",
+          options: {
+            type: 'PUT',
+            url: "<%= story_path(@story) %>",
+            dataType: "script"
+          }
+        }
+      }
+    });
+  });
+</script>
 <%= tinymce_assets %>
 <div class="container" >
   <div class="row">
